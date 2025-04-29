@@ -4,21 +4,25 @@ interface AssetManagementSectionProps {
   lang?: string;
 }
 
-const assetTranslations = {
+interface Translations {
+  [key: string]: string;
+}
+
+const assetTranslations: Translations = {
   en: 'Asset Management: Secure your future with Tareno.',
   de: 'Vermögensverwaltung: Sichern Sie Ihre Zukunft mit Tareno.',
   fr: 'Gestion d’actifs : Sécurisez votre avenir avec Tareno.',
   nl: 'Vermogensbeheer: Zeker uw toekomst met Tareno.'
 };
 
-const ourApproachTranslations = {
+const ourApproachTranslations: Translations = {
   en: 'Our Approach',
   de: 'Unser Ansatz',
   fr: 'Notre approche',
   nl: 'Onze aanpak'
 };
 
-const benefitsOfIndependenceTranslations = {
+const benefitsOfIndependenceTranslations: Translations = {
   en: 'Benefits of Independence',
   de: 'Vorteile der Unabhängigkeit',
   fr: 'Avantages de l’indépendance',
