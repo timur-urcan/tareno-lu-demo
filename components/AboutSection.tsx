@@ -1,5 +1,6 @@
 'use client';
 
+// Component for the About section
 const AboutSection = () => {
   return (
     <section className="py-20 bg-white" id="about">
