@@ -19,7 +19,6 @@ interface PageProps {
 }
 
 export default async function LangPage({ params }: PageProps) {
-  const lang = params.lang;
   return (
     <main>
       <Navbar />
