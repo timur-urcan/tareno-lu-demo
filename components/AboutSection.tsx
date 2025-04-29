@@ -1,8 +1,5 @@
 'use client';
 
-import Link from 'next/link';
-import { useTranslation } from 'react-i18next';
-
 const AboutSection = () => {
   return (
     <section className="py-20 bg-white" id="about">
