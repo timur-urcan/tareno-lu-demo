@@ -7,7 +7,6 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Handle scroll event to change navbar appearance
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0);
@@ -17,13 +16,12 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Handle smooth scrolling for anchor links
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault();
     const targetElement = document.getElementById(targetId);
     
     if (targetElement) {
-      const offset = 100; // Offset for fixed header
+      const offset = 100;
       const elementPosition = targetElement.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
 
@@ -32,7 +30,6 @@ const Navbar = () => {
         behavior: 'smooth'
       });
 
-      // Close mobile menu after clicking
       setMobileMenuOpen(false);
     }
   };
@@ -53,7 +50,6 @@ const Navbar = () => {
           />
         </div>
         
-        {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
           <a href="#about" onClick={(e) => handleNavClick(e, 'about')} className="hover:text-[#0a2e74] transition-colors text-base">
             About
@@ -78,9 +74,7 @@ const Navbar = () => {
           </a>
         </div>
         
-        {/* Mobile Menu Button */}
         <div className="md:hidden flex items-center">
-          {/* Mobile Menu Toggle */}
           <button 
             className="outline-none text-[#0a2e74]"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -99,7 +93,6 @@ const Navbar = () => {
         </div>
       </div>
       
-      {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-white shadow-lg animate-fade-in">
           <div className="container mx-auto px-6 py-4 flex flex-col space-y-4">

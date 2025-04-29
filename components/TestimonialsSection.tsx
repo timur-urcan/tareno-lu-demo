@@ -1,21 +1,22 @@
 'use client';
+
 import { useState, useEffect } from 'react';
 
 const testimonials = [
   {
-    quote: "With Tareno's expertise, we've seen remarkable growth in our portfolio while maintaining a balanced risk profile.",
-    author: "John Smith",
-    position: "CEO, Tech Innovations Ltd"
+    quote: 'With Tareno\'s expertise, we\'ve seen remarkable growth in our portfolio while maintaining a balanced risk profile.',
+    author: 'John Smith',
+    position: 'CEO, Tech Innovations Ltd'
   },
   {
-    quote: "The team's dedication to understanding our unique needs has made all the difference in our investment journey.",
-    author: "Sarah Johnson",
-    position: "CFO, Global Solutions Inc"
+    quote: 'The team\'s dedication to understanding our unique needs has made all the difference in our investment journey.',
+    author: 'Sarah Johnson',
+    position: 'CFO, Global Solutions Inc'
   },
   {
-    quote: "Tareno's approach to sustainable investing aligns perfectly with our values and long-term financial goals.",
-    author: "Michael Chen",
-    position: "Director, Green Future Foundation"
+    quote: 'Tareno\'s approach to sustainable investing aligns perfectly with our values and long-term financial goals.',
+    author: 'Michael Chen',
+    position: 'Director, Green Future Foundation'
   }
 ];
 
