@@ -55,7 +55,7 @@ const TestimonialsSection = ({ lang = 'en' }: TestimonialsSectionProps) => {
                 className={`transition-opacity duration-500 ${index === currentIndex ? 'opacity-100' : 'opacity-0 absolute top-0 left-0'}`}
               >
                 <blockquote className="text-xl italic text-center mb-8">
-                  &quot;{testimonial.quote}&quot;
+                  &quot;{testimonial.quote.replace(/"/g, '&quot;')}&quot;
                 </blockquote>
                 <div className="text-center">
                   <p className="font-semibold">{testimonial.author}</p>

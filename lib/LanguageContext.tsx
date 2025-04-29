@@ -11,11 +11,11 @@ type LanguageContextType = {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const { i18n } = useTranslation();
-  const [currentLanguage, setCurrentLanguage] = useState(i18n.language || 'en');
+  const {  } = useTranslation();
+  const [currentLanguage, setCurrentLanguage] = useState(useTranslation().i18n.language || 'en');
 
   const changeLanguage = (lang: string) => {
-    i18n.changeLanguage(lang);
+    useTranslation().i18n.changeLanguage(lang);
     localStorage.setItem('i18nextLng', lang);
     setCurrentLanguage(lang);
     // Force a re-render by triggering a state update
@@ -23,8 +23,8 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   };
 
   useEffect(() => {
-    setCurrentLanguage(i18n.language);
-  }, [i18n.language]);
+    setCurrentLanguage(useTranslation().i18n.language);
+  }, [useTranslation().i18n.language]);
 
   return (
     <LanguageContext.Provider value={{ currentLanguage, changeLanguage }}>
