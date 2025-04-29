@@ -1,21 +1,16 @@
 'use client';
 
-import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
-import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../lib/LanguageContext';
 
 interface NavbarProps {
-  lang?: string;
 }
 
-const Navbar = ({ lang = 'en' }: NavbarProps) => {
+const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const languageMenuRef = useRef<HTMLDivElement>(null);
-  const { t } = useTranslation();
-  const { currentLanguage, changeLanguage } = useLanguage();
+  const { currentLanguage } = useLanguage();
 
   // Handle scroll event to change navbar appearance
   useEffect(() => {
@@ -53,17 +48,6 @@ const Navbar = ({ lang = 'en' }: NavbarProps) => {
     }
   };
 
-  // Get language display name
-  const getLanguageDisplay = (code: string) => {
-    switch (code) {
-      case 'en': return t('languages.english');
-      case 'de': return t('languages.german');
-      case 'fr': return t('languages.french');
-      case 'nl': return t('languages.dutch');
-      default: return t('languages.english');
-    }
-  };
-
   // Get language flag emoji
   const getLanguageFlag = (code: string) => {
     switch (code) {
@@ -81,40 +65,38 @@ const Navbar = ({ lang = 'en' }: NavbarProps) => {
     }`}>
       <div className="container mx-auto px-6 flex justify-between items-center">
         <div className="flex items-center">
-          <Link href="/">
-            <Image 
-              src="/tarenologo.png" 
-              alt="Tareno S.A. Logo" 
-              width={120} 
-              height={40}
-              className="h-auto"
-              priority
-            />
-          </Link>
+          <Image 
+            src="/tarenologo.png" 
+            alt="Tareno S.A. Logo" 
+            width={120} 
+            height={40}
+            className="h-auto"
+            priority
+          />
         </div>
         
         {/* Desktop Navigation */}
         <div className="hidden md:flex space-x-8 items-center">
           <a href="#about" onClick={(e) => handleNavClick(e, 'about')} className="hover:text-[#0a2e74] transition-colors text-base">
-            {t('navigation.about')}
+            About
           </a>
           <a href="#asset-management" onClick={(e) => handleNavClick(e, 'asset-management')} className="hover:text-[#0a2e74] transition-colors text-base">
-            {t('navigation.assetManagement')}
+            Asset Management
           </a>
           <a href="#testimonials" onClick={(e) => handleNavClick(e, 'testimonials')} className="hover:text-[#0a2e74] transition-colors text-base">
-            {t('navigation.testimonials')}
+            Testimonials
           </a>
           <a href="#services" onClick={(e) => handleNavClick(e, 'services')} className="hover:text-[#0a2e74] transition-colors text-base">
-            {t('navigation.services')}
+            Services
           </a>
           <a href="#case-studies" onClick={(e) => handleNavClick(e, 'case-studies')} className="hover:text-[#0a2e74] transition-colors text-base">
-            {t('navigation.caseStudies')}
+            Case Studies
           </a>
           <a href="#news-insights" onClick={(e) => handleNavClick(e, 'news-insights')} className="hover:text-[#0a2e74] transition-colors text-base">
-            {t('navigation.newsInsights')}
+            News & Insights
           </a>
           <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} className="hover:text-[#0a2e74] transition-colors text-base">
-            {t('navigation.contact')}
+            Contact
           </a>
           
           {/* Language Selector */}
@@ -156,25 +138,25 @@ const Navbar = ({ lang = 'en' }: NavbarProps) => {
         <div className="md:hidden bg-white shadow-lg animate-fade-in">
           <div className="container mx-auto px-6 py-4 flex flex-col space-y-4">
             <a href="#about" onClick={(e) => handleNavClick(e, 'about')} className="hover:text-[#0a2e74] transition-colors text-base py-2">
-              {t('navigation.about')}
+              About
             </a>
             <a href="#asset-management" onClick={(e) => handleNavClick(e, 'asset-management')} className="hover:text-[#0a2e74] transition-colors text-base py-2">
-              {t('navigation.assetManagement')}
+              Asset Management
             </a>
             <a href="#testimonials" onClick={(e) => handleNavClick(e, 'testimonials')} className="hover:text-[#0a2e74] transition-colors text-base py-2">
-              {t('navigation.testimonials')}
+              Testimonials
             </a>
             <a href="#services" onClick={(e) => handleNavClick(e, 'services')} className="hover:text-[#0a2e74] transition-colors text-base py-2">
-              {t('navigation.services')}
+              Services
             </a>
             <a href="#case-studies" onClick={(e) => handleNavClick(e, 'case-studies')} className="hover:text-[#0a2e74] transition-colors text-base py-2">
-              {t('navigation.caseStudies')}
+              Case Studies
             </a>
             <a href="#news-insights" onClick={(e) => handleNavClick(e, 'news-insights')} className="hover:text-[#0a2e74] transition-colors text-base py-2">
-              {t('navigation.newsInsights')}
+              News & Insights
             </a>
             <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} className="hover:text-[#0a2e74] transition-colors text-base py-2">
-              {t('navigation.contact')}
+              Contact
             </a>
           </div>
         </div>
