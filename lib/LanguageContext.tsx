@@ -1,7 +1,6 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { useTranslation } from 'react-i18next';
 
 type LanguageContextType = {
   currentLanguage: string;
@@ -11,11 +10,9 @@ type LanguageContextType = {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const {  } = useTranslation();
-  const [currentLanguage, setCurrentLanguage] = useState(useTranslation().i18n.language || 'en');
+  const [currentLanguage, setCurrentLanguage] = useState('en');
 
   const changeLanguage = (lang: string) => {
-    useTranslation().i18n.changeLanguage(lang);
     localStorage.setItem('i18nextLng', lang);
     setCurrentLanguage(lang);
     // Force a re-render by triggering a state update
@@ -23,8 +20,11 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   };
 
   useEffect(() => {
-    setCurrentLanguage(useTranslation().i18n.language);
-  }, [useTranslation().i18n.language]);
+    const storedLanguage = localStorage.getItem('i18nextLng');
+    if (storedLanguage) {
+      setCurrentLanguage(storedLanguage);
+    }
+  }, []);
 
   return (
     <LanguageContext.Provider value={{ currentLanguage, changeLanguage }}>

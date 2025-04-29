@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
-import { useLanguage } from '../lib/LanguageContext';
 
 interface NavbarProps {
 }
@@ -10,7 +9,6 @@ interface NavbarProps {
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { currentLanguage } = useLanguage();
 
   // Handle scroll event to change navbar appearance
   useEffect(() => {
@@ -45,17 +43,6 @@ const Navbar = () => {
         top: targetPosition,
         behavior: 'smooth'
       });
-    }
-  };
-
-  // Get language flag emoji
-  const getLanguageFlag = (code: string) => {
-    switch (code) {
-      case 'en': return '🇬🇧';
-      case 'de': return '🇩🇪';
-      case 'fr': return '🇫🇷';
-      case 'nl': return '🇳🇱';
-      default: return '🇬🇧';
     }
   };
 
@@ -98,29 +85,10 @@ const Navbar = () => {
           <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} className="hover:text-[#0a2e74] transition-colors text-base">
             Contact
           </a>
-          
-          {/* Language Selector */}
-          <button className="flex items-center justify-center text-[#0a2e74] cursor-default" aria-label="Language icon" disabled>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-1">
-              <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M2 12H22" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M12 2C14.5013 4.73835 15.9228 8.29203 16 12C15.9228 15.708 14.5013 19.2616 12 22C9.49872 19.2616 8.07725 15.708 8 12C8.07725 8.29203 9.49872 4.73835 12 2Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </button>
         </div>
         
         {/* Mobile Menu Button */}
         <div className="md:hidden flex items-center">
-          {/* Mobile Language Selector */}
-          <button className="flex items-center justify-center text-[#0a2e74] cursor-default" aria-label="Current language" disabled>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-1">
-              <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M2 12H22" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M12 2C14.5013 4.73835 15.9228 8.29203 16 12C15.9228 15.708 14.5013 19.2616 12 22C9.49872 19.2616 8.07725 15.708 8 12C8.07725 8.29203 9.49872 4.73835 12 2Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            <span className="text-sm">{getLanguageFlag(currentLanguage)}</span>
-          </button>
-          
           {/* Mobile Menu Toggle */}
           <button 
             className="outline-none text-[#0a2e74]"
