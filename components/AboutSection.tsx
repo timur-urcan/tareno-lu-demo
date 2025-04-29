@@ -1,7 +1,6 @@
 'use client';
 
 // Component for the About section
-import Image from 'next/image';
 import Link from 'next/link';
 
 const AboutSection = () => {

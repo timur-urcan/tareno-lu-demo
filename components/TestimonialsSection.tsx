@@ -46,7 +46,7 @@ const TestimonialsSection = () => {
               </svg>
               <div>
                 <blockquote className="text-xl italic mb-4 text-white">
-                  "{testimonial.quote}"
+                  &quot;{testimonial.quote}&quot;
                 </blockquote>
                 <p className="text-white font-semibold">{testimonial.author}</p>
                 <p className="text-white text-sm">{testimonial.position}</p>
