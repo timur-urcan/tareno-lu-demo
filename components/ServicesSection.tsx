@@ -5,6 +5,10 @@ interface ServicesSectionProps {
   lang?: string;
 }
 
+interface Translations {
+  [key: string]: string;
+}
+
 const services = [
   {
     id: 1,
@@ -50,7 +54,7 @@ const services = [
   }
 ];
 
-const servicesTranslations = {
+const servicesTranslations: Translations = {
   en: 'Our Services',
   de: 'Unsere Dienstleistungen',
   fr: 'Nos services',
