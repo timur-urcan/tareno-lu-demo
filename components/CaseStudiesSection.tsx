@@ -5,6 +5,10 @@ interface CaseStudiesSectionProps {
   lang?: string;
 }
 
+interface Translations {
+  [key: string]: string;
+}
+
 const caseStudies = [
   {
     id: 1,
@@ -29,7 +33,7 @@ const caseStudies = [
   }
 ];
 
-const caseStudiesTranslations = {
+const caseStudiesTranslations: Translations = {
   en: 'Case Studies: Real results for real clients.',
   de: 'Fallstudien: Echte Ergebnisse für echte Kunden.',
   fr: 'Études de cas : De vrais résultats pour de vrais clients.',
