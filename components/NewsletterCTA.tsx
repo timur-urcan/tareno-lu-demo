@@ -6,7 +6,17 @@ interface NewsletterCTAProps {
   lang?: string;
 }
 
-const newsletterTranslations = {
+interface Translations {
+  [key: string]: {
+    stayInformed: string;
+    subscribeText: string;
+    subscribeButton: string;
+    thankYouMessage: string;
+    unsubscribeText: string;
+  };
+}
+
+const newsletterTranslations: Translations = {
   en: {
     stayInformed: 'Stay Informed with Our Newsletter',
     subscribeText: 'Subscribe to receive our monthly market insights, investment strategies, and exclusive event invitations directly to your inbox.',
