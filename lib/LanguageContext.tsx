@@ -13,14 +13,12 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [currentLanguage, setCurrentLanguage] = useState('en');
 
   const changeLanguage = (lang: string) => {
-    localStorage.setItem('i18nextLng', lang);
+    localStorage.setItem('lang', lang);
     setCurrentLanguage(lang);
-    // Force a re-render by triggering a state update
-    window.location.reload();
   };
 
   useEffect(() => {
-    const storedLanguage = localStorage.getItem('i18nextLng');
+    const storedLanguage = localStorage.getItem('lang');
     if (storedLanguage) {
       setCurrentLanguage(storedLanguage);
     }
@@ -40,3 +38,5 @@ export const useLanguage = () => {
   }
   return context;
 };
+
+export default LanguageContext;

@@ -1,10 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useState, useEffect, useRef } from 'react';
-
-interface NavbarProps {
-}
+import { useState, useEffect } from 'react';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -13,11 +10,7 @@ const Navbar = () => {
   // Handle scroll event to change navbar appearance
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 0);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -27,22 +20,20 @@ const Navbar = () => {
   // Handle smooth scrolling for anchor links
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault();
-    
-    // Close mobile menu if open
-    if (mobileMenuOpen) {
-      setMobileMenuOpen(false);
-    }
-    
     const targetElement = document.getElementById(targetId);
+    
     if (targetElement) {
-      // Offset for fixed navbar
-      const navbarHeight = 70;
-      const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - navbarHeight;
-      
+      const offset = 100; // Offset for fixed header
+      const elementPosition = targetElement.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
       window.scrollTo({
-        top: targetPosition,
+        top: offsetPosition,
         behavior: 'smooth'
       });
+
+      // Close mobile menu after clicking
+      setMobileMenuOpen(false);
     }
   };
 
@@ -63,7 +54,7 @@ const Navbar = () => {
         </div>
         
         {/* Desktop Navigation */}
-        <div className="hidden md:flex space-x-8 items-center">
+        <div className="hidden md:flex items-center space-x-8">
           <a href="#about" onClick={(e) => handleNavClick(e, 'about')} className="hover:text-[#0a2e74] transition-colors text-base">
             About
           </a>
@@ -93,10 +84,17 @@ const Navbar = () => {
           <button 
             className="outline-none text-[#0a2e74]"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle mobile menu"
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={mobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
-            </svg>
+            {mobileMenuOpen ? (
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
           </button>
         </div>
       </div>
