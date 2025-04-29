@@ -5,6 +5,10 @@ interface NewsInsightsSectionProps {
   lang?: string;
 }
 
+interface Translations {
+  [key: string]: string;
+}
+
 const newsItems = [
   {
     id: 1,
@@ -40,7 +44,7 @@ const newsItems = [
   }
 ];
 
-const newsTranslations = {
+const newsTranslations: Translations = {
   en: 'News & Insights',
   de: 'Nachrichten & Einblicke',
   fr: 'Actualités & perspectives',
