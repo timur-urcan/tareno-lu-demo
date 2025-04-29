@@ -12,38 +12,44 @@ import Footer from '../../components/Footer';
 import AnimateOnScroll from '../../components/AnimateOnScroll';
 import ChatbotSimulation from '../../components/ChatbotSimulation';
 
-export default function LangPage({ params }: { params: { lang: string } }) {
+interface PageProps {
+  params: {
+    lang: string;
+  };
+}
+
+export default async function LangPage({ params }: PageProps) {
   const lang = params.lang;
   return (
     <main>
-      <Navbar lang={lang} />
-      <HeroSection lang={lang} />
+      <Navbar />
+      <HeroSection />
       <AnimateOnScroll animation="fade-up">
-        <AboutSection lang={lang} />
+        <AboutSection />
       </AnimateOnScroll>
       <AnimateOnScroll animation="fade-up">
-        <AssetManagementSection lang={lang} />
+        <AssetManagementSection />
       </AnimateOnScroll>
       <AnimateOnScroll animation="fade-up">
-        <TestimonialsSection lang={lang} />
+        <TestimonialsSection />
       </AnimateOnScroll>
       <AnimateOnScroll animation="fade-up">
-        <ServicesSection lang={lang} />
+        <ServicesSection />
       </AnimateOnScroll>
       <AnimateOnScroll animation="fade-up">
-        <CaseStudiesSection lang={lang} />
+        <CaseStudiesSection />
       </AnimateOnScroll>
       <AnimateOnScroll animation="fade-up">
-        <NewsInsightsSection lang={lang} />
+        <NewsInsightsSection />
       </AnimateOnScroll>
       <AnimateOnScroll animation="fade-up">
-        <NewsletterCTA lang={lang} />
+        <NewsletterCTA />
       </AnimateOnScroll>
       <AnimateOnScroll animation="fade-up">
-        <ContactSection lang={lang} />
+        <ContactSection />
       </AnimateOnScroll>
-      <Footer lang={lang} />
-      <ChatbotSimulation lang={lang} />
+      <Footer />
+      <ChatbotSimulation />
     </main>
   );
 }
